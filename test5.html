@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>推荐结果</title>
+    <script src="echarts.js" type="text/javascript" charset="utf-8"></script>
+</head>
+<body>
+<div id="chart1" style="width: 90%;height: 400px;top: 50px;left: 5%;border: 3px solid #000;"></div>
+<script>
+    var chart1 = echarts.init(document.getElementById("chart1"));
+    option = {
+        title : {
+            text: '推荐结果展示',
+            subtext: '',
+            x:'center'
+        },
+        tooltip : {
+            trigger: 'item',
+            formatter: "{a} <br/>{b} : {c} ({d}%)"
+        },
+		legend: {
+            orient : 'vertical',
+            x : 'left',
+            data:['用户A', '用户B', '用户C']
+        },
+        
+        toolbox: {
+            show : true,
+            feature : {
+                mark : {show: true},
+                dataView : {show: true, readOnly: false},
+                magicType : {
+                    show: true,
+                    type: ['pie', 'funnel'],
+                    option: {
+                        funnel: {
+                            x: '25%',
+                            width: '50%',
+                            funnelAlign: 'left',
+                            max: 1548
+                        }
+                    }
+                },
+                restore : {show: true},
+                saveAsImage : {show: true}
+            }
+        },
+        calculable : true,
+		xAxis: {
+                data: ["电影1","电影2","电影3","电影4","电影5","电影6"] // x轴数据。
+            },
+        yAxis: {},
+        series : [
+            {
+                name:'用户A',
+                type:'bar', 
+                center: ['15%', '60%'],
+                data:[ 9.87,  16.59,  4.44,  11.68, 6.45,  15.40 ]
+            },
+            {
+                name:'用户B',
+                type:'bar', 
+                center: ['50%', '60%'],
+                data:[ 2.38,  8.27, 0,  3.27, 7.42, 9.77  ]
+            },
+            {
+                name:'用户C',
+                type:'bar', 
+                center: ['85%', '60%'],
+                data:[ 23.90, 4.25, 23.95, 22.85, 0, 3.10 ]
+            },
+
+        ]
+    };
+    chart1.setOption(option)
+
+</script>
+</body>
+</html>
